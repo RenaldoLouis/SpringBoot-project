@@ -1,5 +1,7 @@
 package commsult.ang.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -23,6 +25,7 @@ import commsult.ang.repository.TutorialRepository;
 @RestController
 @RequestMapping("/api")
 public class TutorialController {
+	private static final Logger log = LoggerFactory.getLogger(TutorialController.class);
 	@Autowired
 	TutorialRepository tutorialRepository;
 
@@ -56,6 +59,7 @@ public class TutorialController {
 	@PostMapping("/tutorials")
 	public ResponseEntity<Tutorial> createTutorial(@RequestBody Tutorial tutorial) {
 		try {
+			log.info(tutorial.toString());
 			Tutorial _tutorial = tutorialRepository
 					.save(new Tutorial(tutorial.getTitle(), tutorial.getDescription(), false));
 			return new ResponseEntity<>(_tutorial, HttpStatus.CREATED);
