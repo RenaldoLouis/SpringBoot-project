@@ -60,9 +60,15 @@ public class TutorialController {
 	public ResponseEntity<Tutorial> createTutorial(@RequestBody Tutorial tutorial) {
 		try {
 			log.info(tutorial.toString());
-			Tutorial _tutorial = tutorialRepository
-					.save(new Tutorial(tutorial.getTitle(), tutorial.getDescription(), false));
-			return new ResponseEntity<>(_tutorial, HttpStatus.CREATED);
+			List<Tutorial> tutorials = new ArrayList<Tutorial>();
+			tutorialRepository.findByTitleContaining(tutorial.getTitle()).forEach(tutorials::add);
+			if (tutorials.isEmpty()) {
+				Tutorial _tutorial = tutorialRepository
+						.save(new Tutorial(tutorial.getTitle(), tutorial.getDescription(), false));
+				return new ResponseEntity<>(_tutorial, HttpStatus.CREATED);
+			} else {
+				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			}
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
