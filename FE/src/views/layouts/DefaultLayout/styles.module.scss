@@ -1,0 +1,21 @@
+@import '/src/views/styles/colors';
+@import '/src/views/styles/common';
+
+.layoutHeader {
+  height: 100% !important;
+  padding: 0 !important;
+}
+
+.layoutSider {
+  background-color: map-get($map: $colors, $key: 'White') !important;
+
+  @media screen and (max-width: 769px) {
+    position: absolute;
+    min-height: 100vh;
+    z-index: 1000;
+  }
+}
+
+.layoutFooter {
+  background-color: $primary-color  !important;
+}

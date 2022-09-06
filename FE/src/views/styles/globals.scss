@@ -1,0 +1,30 @@
+@import './fonts';
+@import './colors';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: $font-family;
+  font-size: map-get($map: $font-sizes, $key: 'base');
+  font-weight: map-get($map: $font-weights, $key: 'normal');
+  background-color: map-get($map: $colors, $key: 'White');
+}
+
+// Overrides and Customization for Antd Themes can be found
+// in craco.config.js
+.ant-btn {
+  border-radius: 6px;
+}
+
+.ant-back-top {
+  right: 20px;
+}
+
+.ant-back-top-rtl {
+  left: 20px;
+}

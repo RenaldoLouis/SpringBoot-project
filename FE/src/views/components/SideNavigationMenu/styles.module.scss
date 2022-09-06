@@ -1,0 +1,16 @@
+@import '/src/views/styles/fonts';
+@import '/src/views/styles/spacing';
+
+.sideNavMenu {
+  font-size: map-get($map: $font-sizes, $key: 'subtitle') !important;
+  
+  > li {
+    height: 56px !important;
+    padding: $space4 $space12 !important;
+  }
+}
+
+// Nav Item Classes
+.navItemIcons {
+  font-size: map-get($map: $font-sizes, $key: 'title') !important;
+}

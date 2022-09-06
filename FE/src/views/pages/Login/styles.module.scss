@@ -1,0 +1,13 @@
+@import '/src/views/styles/globals.scss';
+@import '/src/views/styles/breakpoints.scss';
+@import '/src/views/styles/spacing.scss';
+@import '/src/views/styles/colors.scss';
+
+.loginContainer {
+  height: 100%;
+  max-width: $mobile-breakpoint;
+  margin: $space50 auto;
+  padding: $space20;
+  border: 1px solid $primary-color;
+  border-radius: 8px;
+}

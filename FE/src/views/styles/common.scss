@@ -1,0 +1,138 @@
+@import '/src/views/styles/fonts';
+@import '/src/views/styles/colors';
+@import '/src/views/styles/spacing';
+
+// For Classes Commonly used throughout the app
+.fullScreenHeight {
+  min-height: 100vh !important;
+}
+
+.fullWidthContent {
+  width: 100%;
+}
+
+.listContainer {
+  @extend .fullWidthContent;
+  padding: $space20;
+}
+
+.listingCardCoverImage {
+  border-radius: 8px 8px 0 0 !important;
+}
+
+.listingCardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.showcaseImage {
+  min-height: 200px;
+  width: 100%;
+}
+
+.statusTags {
+  padding: 8px 20px;
+  font-size: 18px;
+  font-weight: map-get($map: $font-weights, $key: 'heavy');
+}
+
+// Text Classes
+
+.textWhite {
+  color: map-get($map: $colors, $key: 'White');
+}
+
+.textBlack {
+  color: map-get($map: $colors, $key: 'Black');
+}
+
+// Button Classes
+
+.greenBtn {
+  background-color: map-get($map: $colors, $key: 'KellyGreen') !important;
+  border-color: map-get($map: $colors, $key: 'KellyGreen') !important;
+}
+
+.blueBtn {
+  background-color: map-get($map: $colors, $key: 'DodgerBlue') !important;
+  border-color: map-get($map: $colors, $key: 'DodgerBlue') !important;
+}
+
+// Form Classes
+
+.formContainer {
+  width: 100%;
+}
+
+.formImageWrapper {
+  margin: 10px;
+  width : 100%;
+  position: relative;
+}
+
+.imageUploaderElement {
+  > div {
+    min-width: 300px;
+    min-height: 200px;
+  }
+}
+
+.inputFormItem {
+  max-width: 500px;
+}
+
+.inputNumberField {
+  width: 100%;
+}
+
+.optionDivider {
+  font-size: 12px !important;
+  margin: 4px 0 !important;
+}
+
+.listRankContainer {
+  text-align: center;
+}
+
+.listRankHeader {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+.listRankItems {
+  list-style: none;
+  padding-left: 0;
+}
+
+.listRankItems li {
+  display: flex;
+  align-items: center;
+  border: solid 2px #d0d0d0;
+  border-radius: .2em;
+  padding: .5em .8em .5em .5em;
+  margin-bottom: 1em;
+}
+
+.listRankItems p {
+  max-width: none;
+  font-weight: bold;
+  margin: 0;
+}
+
+.listRankImages {
+  overflow: hidden;
+  flex-shrink: 0;
+  width: 2em;
+  height: 2em;
+  background-color: #e8e8e8;
+  padding: .5em;
+  margin-right: .5em;
+}
+
+.listRankImages img {
+  display: block;
+  width: 100%;
+  height: auto;
+}

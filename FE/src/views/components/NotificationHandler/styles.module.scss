@@ -1,0 +1,14 @@
+@import '/src/views/styles/colors';
+
+.errorNotification {
+  border: 2px solid map-get($map: $colors, $key: 'RadicalRed');
+}
+
+.successNotification {
+  border: 2px solid map-get($map: $colors, $key: 'KellyGreen');
+  background-color: map-get($map: $colors, $key: 'Ivory');
+}
+
+.warningNotification {
+  border: 2px solid map-get($map: $colors, $key: 'DarkTangerine');
+}

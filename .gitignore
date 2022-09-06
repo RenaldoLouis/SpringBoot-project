@@ -1,3 +1,47 @@
+# Node artifact files
+FE/node_modules
+
+FE/node_modules/
+
+FE/node_modules/.
+
+FE/dist/
+
+FE/target
+
+node_modules/
+
+node/
+
+# production
+FE/build
+
+# misc
+FE/package-lock.json
+
+FE/.env
+
+FE/yarn.lock
+
+FE/.pack
+
+FE/.cache
+
+
+# Log files
+BE/*.log
+
+BE/target/
+
+BE/.env
+
+BE/__debug_bin
+
+BE/.metadata
+
+BE/target
+
+
 # Compiled class file
 *.class
 

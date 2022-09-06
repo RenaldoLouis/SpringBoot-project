@@ -1,0 +1,21 @@
+@import '/src/views/styles/colors.scss';
+@import '/src/views/styles/fonts.scss';
+@import '/src/views/styles/spacing.scss';
+
+.dashboardHeader {
+  height: 100%;
+  padding: $space12 $space16;
+  background-color: $primary-color  !important;
+
+  .headerSubtitle {
+    color: map-get($map: $colors, $key: 'White');
+
+    @media screen and (max-width: 769px) {
+      font-size: map-get($map: $font-sizes, $key: 'subtitle');
+    }
+
+    @media screen and (max-width: 481px) {
+      font-size: map-get($map: $font-sizes, $key: 'base');
+    }
+  }
+}
