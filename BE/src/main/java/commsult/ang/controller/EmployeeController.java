@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import commsult.ang.exception.DuplicateTutorialException;
 import commsult.ang.model.Employee;
 import commsult.ang.repository.EmployeeRepository;
 
@@ -31,24 +30,24 @@ public class EmployeeController {
 	@Autowired
 	EmployeeRepository employeeRepository;
 
-	@GetMapping("/tutorials")
+	@GetMapping("/employees")
 	public ResponseEntity<List<Employee>> getAllEmployees(@RequestParam(required = false) String title) {
 		try {
-			List<Employee> tutorials = new ArrayList<Employee>();
+			List<Employee> employees = new ArrayList<Employee>();
 			if (title == null)
-				employeeRepository.findAll().forEach(tutorials::add);
+				employeeRepository.findAll().forEach(employees::add);
 			else
-				employeeRepository.findByNameContaining(title).forEach(tutorials::add);
-			if (tutorials.isEmpty()) {
+				employeeRepository.findByNameContaining(title).forEach(employees::add);
+			if (employees.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 			}
-			return new ResponseEntity<>(tutorials, HttpStatus.OK);
+			return new ResponseEntity<>(employees, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 
-	@GetMapping("/tutorials/{id}")
+	@GetMapping("/employees/{id}")
 	public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") long id) {
 		Optional<Employee> employeeData = employeeRepository.findById(id);
 		if (employeeData.isPresent()) {
@@ -58,13 +57,13 @@ public class EmployeeController {
 		}
 	}
 
-	@PostMapping("/tutorials")
+	@PostMapping("/employees")
 	public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee) {
 		try {
 			// log.info(employee.toString());
-			List<Employee> tutorials = new ArrayList<Employee>();
-			employeeRepository.findByNameContaining(employee.getName()).forEach(tutorials::add);
-			if (tutorials.isEmpty()) {
+			List<Employee> employees = new ArrayList<Employee>();
+			employeeRepository.findByNameContaining(employee.getName()).forEach(employees::add);
+			if (employees.isEmpty()) {
 				Employee _employee = employeeRepository
 						.save(new Employee(employee.getName(), employee.getRole()));
 				log.info(_employee.toString());
@@ -78,7 +77,7 @@ public class EmployeeController {
 		}
 	}
 
-	@PutMapping("/tutorials/{id}")
+	@PutMapping("/employees/{id}")
 	public ResponseEntity<Employee> updateTutorial(@PathVariable("id") long id, @RequestBody Employee employee) {
 		Optional<Employee> employeeData = employeeRepository.findById(id);
 		if (employeeData.isPresent()) {
@@ -91,7 +90,7 @@ public class EmployeeController {
 		}
 	}
 
-	@DeleteMapping("/tutorials/{id}")
+	@DeleteMapping("/employees/{id}")
 	public ResponseEntity<HttpStatus> deleteTutorial(@PathVariable("id") long id) {
 		try {
 			employeeRepository.deleteById(id);
@@ -101,7 +100,7 @@ public class EmployeeController {
 		}
 	}
 
-	@DeleteMapping("/tutorials")
+	@DeleteMapping("/employees")
 	public ResponseEntity<HttpStatus> deleteAllTutorials() {
 		try {
 			employeeRepository.deleteAll();
