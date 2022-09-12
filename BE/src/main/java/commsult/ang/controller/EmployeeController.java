@@ -57,6 +57,23 @@ public class EmployeeController {
 		}
 	}
 
+	@PostMapping("/Login")
+	public ResponseEntity<List<Employee>> login(@RequestParam(required = false) String title) {
+		try {
+			List<Employee> employees = new ArrayList<Employee>();
+			if (title == null)
+				employeeRepository.findAll().forEach(employees::add);
+			else
+				employeeRepository.findByNameContaining(title).forEach(employees::add);
+			if (employees.isEmpty()) {
+				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+			}
+			return new ResponseEntity<>(employees, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+
 	@PostMapping("/employees")
 	public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee) {
 		try {
