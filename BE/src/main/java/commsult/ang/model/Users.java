@@ -19,7 +19,7 @@ public class Users {
     private @Column(length = 155) String username;
     private @Column(length = 155) String password;
     private @Column(length = 155) Integer role;
-    private Integer partners;
+    private Integer[] partners;
     private Integer company;
     private @DateTimeFormat(pattern = "YYYY-MM-HH HH:mm:ss") Date valid_start;
     private @DateTimeFormat(pattern = "YYYY-MM-HH HH:mm:ss") Date valid_end;
@@ -31,8 +31,10 @@ public class Users {
 
     }
 
-    public Users(String username, String password, Integer role, Integer partners, Integer company, Date valid_start,
+    public Users(Long id, String username, String password, Integer role, Integer[] partners, Integer company,
+            Date valid_start,
             Date valid_end, Boolean is_active, Date created_on, Date edited_on) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.role = role;
@@ -61,7 +63,7 @@ public class Users {
         return this.role;
     }
 
-    public Integer getPartners() {
+    public Integer[] getPartners() {
         return this.partners;
     }
 
@@ -100,6 +102,7 @@ public class Users {
 
     @Override
     public String toString() {
-        return "Users{" + "id=" + this.id + ", name='" + this.username + '\'' + ", role='" + this.role + '\'' + '}';
+        return "Users{" + "id=" + this.id + ", name='" + this.username + '\'' + ", role='" + this.role + '\''
+                + this.password + '\'' + '}';
     }
 }
